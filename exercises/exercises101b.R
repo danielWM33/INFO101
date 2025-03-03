@@ -4,6 +4,7 @@ rovs <- data.frame(
   price_usd = c(3459, 2999, 6500)
 )
 View(rovs)
+# 3 rows by 2 columns
 
 # Fill in the blanks to create a data frame with columns "species" and "mass_kg"
 # The lingcod weighed 4.9 kg and the two halibut weighed 11.2 and 14.1 kg.

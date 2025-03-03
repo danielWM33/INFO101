@@ -10,6 +10,7 @@ library(marinecs100b)
 
 dir()
 
+
 # P2 Critique the organization of woa.csv according to the characteristics of
 # tidy data.
 
@@ -19,7 +20,7 @@ dir()
 
 # P3 P3 Call read.csv() on woa.csv. What error message do you get? What do you
 # think that means?
-woa.csv
+
 read.csv("woa (1).csv")
 ?read.csv()
 #there's more empty columns than necessary :(
@@ -40,9 +41,9 @@ View(csv)
 
 depths <- c(
   seq(5, 100, by = 5),
-  seq(100, 500, by = 25),
-  seq(500, 2000, by = 50),
-  seq(2000, 5500, by = 100)
+  seq(125, 500, by = 25),
+  seq(550, 2000, by = 50),
+  seq(2100, 5500, by = 100)
 )
 depths
 ?seq()
@@ -98,7 +99,8 @@ amount = sum(!is.na(csv[, 27:49]))
 amount
 
 sumMeanWater/amount
-
+# 7.201573, my answer may not be correct but I think my code is following the
+# principles of sum of all water temps/values.
 
 
 # Analyzing long-format data ----------------------------------------------
@@ -151,11 +153,12 @@ find_closest <- function(lat, long) {
 
   return(closest)
 }
+# if there is equally close then the function would still work, but reject the late long/lat set
 
-# mariana_temps <- find_closest(11.21, 142.12)
+mariana_temps <- find_closest(11.21, 142.12)
 # mariana_temps = woa_long[mariana_temps, ]
 
-mariana_temps<- woa_long[woa_long$latitude == 11.5 & woa_long$longitude == 141.5, ]
+mariana_temps<- woa_long[woa_long$latitude == 12 & woa_long$longitude == 141, ]
 
 
 # P11 Interpret your temperature-depth profile. What's the temperature at the surface? How about in the deepest parts? Over what depth range does temperature change the most?
@@ -165,4 +168,4 @@ ggplot(mariana_temps, aes(temp_c, depth_m)) +
   geom_path() +
   scale_y_reverse()
 
-# At the surface, the temp is 27, in the deepest part is at 2, over the 0-1000 the temp changes dramtically
+# At the surface, the temp is 27, in the deepest part is at 2, over the 0-1000 the temp changes dramatically
